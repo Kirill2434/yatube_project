@@ -2,10 +2,11 @@
 
 {% block title %}Последние обновления на сайте{% endblock %}
 
-
 {% block content %}
 <div class="container py-5">
-  <h1>{{ text|safe }}</h1>
+  <h1>
+    {{ text|safe }}
+  </h1>
   <article>
     {% for post in posts %}
     <ul>
@@ -16,11 +17,14 @@
         Дата публикации: {{ post.pub_date|date:"d E Y" }}
       </li>
     </ul>
-    <p>{{ post.text }}</p>
+    <p>
+      {{ post.text }}
+    </p>
     {% if post.group %}
-      <a href="{% url 'posts:group_posts' post.group.slug %}">все записи группы</a>
+      <a href="{% url 'posts:group_lists' post.group.slug %}">все записи группы</a>
     {% endif %}
-    {% if not forloop.last %}<hr>{% endif %}
+    {% if not forloop.last %}<hr>
+    {% endif %}
   </article>
 </div>
 
